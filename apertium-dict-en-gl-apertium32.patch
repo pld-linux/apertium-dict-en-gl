@@ -1,18 +1,17 @@
---- apertium-en-gl-0.5.1/configure.ac.orig	2008-11-19 08:41:42.000000000 +0100
-+++ apertium-en-gl-0.5.1/configure.ac	2010-12-31 11:24:00.442121936 +0100
-@@ -27,8 +27,14 @@
-               APERTIUM_VER=30
-           ],
-           [
--              PKG_CHECK_MODULES(APERTIUM, apertium-3.1 >= 3.1.0)
-+              PKG_CHECK_MODULES(APERTIUM, apertium-3.1 >= 3.1.0,
-+	      [
-               APERTIUM_VER=31
-+	      ],
-+	      [
-+		PKG_CHECK_MODULES(APERTIUM, apertium-3.2 >= 3.2.0)
-+		APERTIUM_VER=32
-+	      ])
+--- apertium-en-gl-0.5.2/configure.ac.orig	2015-12-28 22:11:23.528825016 +0100
++++ apertium-en-gl-0.5.2/configure.ac	2015-12-28 22:12:35.832155314 +0100
+@@ -32,8 +32,13 @@
+                   APERTIUM_VER=31
+               ],
+               [
+-                  PKG_CHECK_MODULES(APERTIUM, apertium-3.2 >= 3.2.0)
++                  PKG_CHECK_MODULES(APERTIUM, apertium-3.2 >= 3.2.0,
++                  [
+                   APERTIUM_VER=32
++		  ],
++                  [PKG_CHECK_MODULES(APERTIUN, apertium >= 3.3.0)
++                   APERTIUM_VER=3
++                  ])
+               ])
            ])
        ])
-   ])

@@ -3,7 +3,7 @@ Summary(pl.UTF-8):	Para języków angielski-galicyjski dla Apertium
 %define	lpair	en-gl
 Name:		apertium-dict-%{lpair}
 Version:	0.5.2
-Release:	1
+Release:	2
 License:	GPL v2+
 Group:		Applications/Text
 Source0:	http://downloads.sourceforge.net/apertium/apertium-%{lpair}-%{version}.tar.gz

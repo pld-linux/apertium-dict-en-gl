@@ -2,22 +2,18 @@ Summary:	English-Galician language pair for Apertium
 Summary(pl.UTF-8):	Para języków angielski-galicyjski dla Apertium
 %define	lpair	en-gl
 Name:		apertium-dict-%{lpair}
-Version:	0.5.2
-Release:	2
+Version:	0.5.4
+Release:	1
 License:	GPL v2+
 Group:		Applications/Text
-Source0:	http://downloads.sourceforge.net/apertium/apertium-%{lpair}-%{version}.tar.gz
-# Source0-md5:	39847897220e4b9e126918219c7712e3
-Patch0:		%{name}-DESTDIR.patch
-Patch1:		%{name}-apertium32.patch
-URL:		http://www.apertium.org/
-BuildRequires:	apertium-devel >= 3.2.0
+Source0:	https://github.com/apertium/apertium-%{lpair}/archive/v%{version}/apertium-%{lpair}-%{version}.tar.gz
+# Source0-md5:	5b64f30a80ad7632a129fa7773e5442f
+URL:		https://www.apertium.org/
+BuildRequires:	apertium-devel >= 3.8.1
 BuildRequires:	autoconf >= 2.52
 BuildRequires:	automake
-BuildRequires:	libxslt-progs
-BuildRequires:	lttoolbox >= 3.2.0
 BuildRequires:	pkgconfig
-Requires:	apertium >= 3.2.0
+Requires:	apertium >= 3.8.1
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -32,8 +28,6 @@ oznaczania części mowy w obu językach.
 
 %prep
 %setup -q -n apertium-%{lpair}-%{version}
-%patch -P0 -p1
-%patch -P1 -p1
 
 %build
 %{__aclocal}
@@ -45,13 +39,9 @@ oznaczania części mowy w obu językach.
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT%{_datadir}/apertium/modes
 
 %{__make} -j1 install \
 	DESTDIR=$RPM_BUILD_ROOT
-
-# not needed here (see modes subdir) and contain wrong (builddir) paths
-%{__rm} $RPM_BUILD_ROOT%{_datadir}/apertium/apertium-%{lpair}/*.mode
 
 %clean
 rm -rf $RPM_BUILD_ROOT
